@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formatador de Data</title>
+</head>
+<body>
+    <h1>Formatador de Data</h1>
+    
+        <label for="dataInput">Digite a data no formato dd/mm/aaaa:</label>
+        <input type="text" id="dataInput" required><br>
+        
+        <button type="button" onclick="formatarData()">Formatar Data</button>
+    
+    <p id="resultadoData"></p>
+
+    <script>
+        // Função para formatar uma data
+        function formatarData() {
+            const dataInput = document.getElementById("dataInput").value;
+            const partes = dataInput.split('/');
+
+            if (partes.length !== 3) {
+                alert("Formato de data inválido. Use o formato dd/mm/aaaa.");
+                return;
+            }
+
+            const dia = parseInt(partes[0]);
+            const mes = parseInt(partes[1]);
+            const ano = parseInt(partes[2]);
+
+            if (isNaN(dia) || isNaN(mes) || isNaN(ano) || dia < 1 || dia > 31 || mes < 1 || mes > 12) {
+                alert("Data inválida.");
+                return;
+            }
+
+            const nomesMeses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+            const nomeMes = nomesMeses[mes - 1];
+
+            const resultadoData = document.getElementById("resultadoData");
+            resultadoData.innerHTML = `${dia} de ${nomeMes} de ${ano}`;
+        }
+    </script>
+</body>
+</html>

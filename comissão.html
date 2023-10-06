@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Comissão</title>
+</head>
+<body>
+    <h1>Calculadora de Comissão</h1>
+        <label for="nomeFuncionario">Nome do Funcionário:</label>
+        <input type="text" id="nomeFuncionario" required><br>
+        
+        <label for="quantidadeProdutos">Quantidade de Produtos Vendidos:</label>
+        <input type="number" id="quantidadeProdutos" required><br>
+        
+        <button type="button" onclick="calcularComissao()">Calcular Comissão</button>
+    
+    <p id="resultadoComissao"></p>
+
+    <script>
+        // Função para calcular a comissão
+        function calcularComissao() {
+            const nomeFuncionario = document.getElementById("nomeFuncionario").value;
+            const quantidadeProdutos = parseInt(document.getElementById("quantidadeProdutos").value);
+
+            let taxaComissao = 1.0;  // Taxa padrão
+            if (quantidadeProdutos > 250) {
+                taxaComissao = 1.5;  // Taxa para mais de 250 produtos
+            }
+            if (quantidadeProdutos > 500) {
+                taxaComissao = 2.0;  // Taxa para mais de 500 produtos
+            }
+
+            const comissaoTotal = quantidadeProdutos * taxaComissao;
+
+            // Exibe o resultado na página
+            const resultadoComissao = document.getElementById("resultadoComissao");
+            resultadoComissao.innerHTML = `Nome do funcionário: ${nomeFuncionario}<br>Total de comissão: R$ ${comissaoTotal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

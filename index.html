@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificação de Notas</title>
+</head>
+<body>
+    <script>
+    
+        function calcularMedia() {
+            var nome = prompt("Digite o nome do aluno:");
+            var nota1 = parseFloat(prompt("Digite a primeira nota:"));
+            var nota2 = parseFloat(prompt("Digite a segunda nota:"));
+            var nota3 = parseFloat(prompt("Digite a terceira nota:"));
+
+            var media = (nota1 + nota2 + nota3) / 3;
+
+  
+            if (media >= 6.0) {
+                alert("O aluno " + nome + " foi aprovado com média " + media.toFixed(2));
+            } else {
+                alert("O aluno " + nome + " foi reprovado com média " + media.toFixed(2));
+            }
+
+           
+            var notasOrdenadas = [nota1, nota2, nota3];
+            notasOrdenadas.sort(function(a, b) {
+                return b - a;
+            });
+
+            alert("Notas em ordem decrescente: " + notasOrdenadas.join(", "));
+        }
+
+        calcularMedia();
+    </script>
+        <img src="NotaMedia.drawio.svg" alt="Média escolar">
+</body>
+</html>
